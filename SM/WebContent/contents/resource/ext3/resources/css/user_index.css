@@ -1,0 +1,276 @@
+@charset "utf-8";
+/* CSS Document */
+/*
+Copyright (C) 2010 YUCHENGTECH CORPORATION
+Code_File:user_index.css
+Revision 1.0  2011/09/01 10:06:46 ShenC	
+*/ 
+.tworegional001 {
+	/* edit region begin */
+	width:1000px;
+	min-width:1000px;
+	/* edit region end */
+	_zoom:1;
+	margin: 0px auto;
+	margin-top:10px;
+	}
+	
+/* ------left box begin------ */
+.tworegional001 .leftbox {
+	/* edit region begin */
+	width:360px; 
+	/* edit region end */
+	float:left; 
+	left:0px;
+	z-index:1;
+	position:relative;	
+	}
+/* ------left box end------ */
+
+/* ------center box begin------ */
+.tworegional001 .centerbox_out {
+	/* edit region begin */ 
+	width:100%;
+	margin:0px 0px 0px -360px;
+	/* edit region end */ 
+	float:left;	
+	}
+.tworegional001 .centerbox_in {
+	/* edit region begin */
+	margin: 0px 0px 0px 360px;
+	/* edit region end */		 
+	}
+/* ------center box end------ */
+
+
+/* HTML begin */
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, a, img, strong, li, ol, ul, form, label, table, caption, tfoot, thead, tr, th, td{
+	padding:0px 0px 0px 0px;
+	margin:0px 0px 0px 0px;	
+}	
+
+html{
+	margin:0 auto;
+	/* edit region begin */	
+	text-align: center;
+	/* edit region end */
+	}
+/* HTML end */
+
+/* BODY begin */
+body {
+	text-align:left;
+	font-family:SimSun,Arial,sans-serif;/* edit region */
+	margin: 0 auto;/* edit region */
+	background-repeat: repeat;
+}
+/* BODY end */
+
+/* h1 h2 h3 h4 h5 h6 h7 h8 begin */
+	h1,h2,h3,h4,h5,h6,h7,h8{
+	font-family:SimSun,Arial,sans-serif;/* edit region */	
+	margin:0px;
+	padding:0px;
+	}
+h6 {
+	font-size:20px;
+	
+}	
+/* h1 h2 h3 h4 h5 h6 h7 end */
+
+/* image begin */
+ img{
+	border:none;
+	}
+/* image end */
+		
+
+/* FORM begin */
+form {
+	margin:0px;
+	padding:0px;
+	}
+/* FORM end */
+
+/* HR begin */
+hr {
+	margin:0px;
+	clear:both;
+	}
+/* HR end */
+
+
+/* ------------------public begin------------------ */
+a:link{
+	color:#ffffff;
+	text-decoration:none;
+	font-family:SimSun;
+	}
+a:visited{
+	color:#ffffff;
+	text-decoration:none;
+	font-family:SimSun;
+	}
+a:active{
+	color:#ffffff;
+	text-decoration:none;
+	font-family:SimSun;
+	}
+a:hover{
+	color:#ffffff;
+	text-decoration:underline;
+	font-family:SimSun;
+	}
+/* a link end */
+	
+/* ------------------public end------------------ */	
+
+.table_list{
+	margin:5px 10px;
+	}
+
+.table_list table{
+	margin:0px;
+	padding:0px;
+	}	
+
+.table_title {
+	background-image: url(../images/default/user_index/title_.jpg);
+	background-repeat: repeat-x;
+	height:19px;
+	line-height:19px;
+	border: 1px solid #dedede;
+	font-weight: bold;
+	font-size:12px;
+	text-align:center;
+	}
+	
+.table_list_ {
+	border-bottom: 1px solid #ededed;
+	border-right: 1px solid #ededed;
+	border-left: 1px solid #ededed;		
+	}
+
+.table_list_ td {
+	height:25px;
+	line-height:25px;
+	}
+
+.fbfbfb{
+	background-color:#fbfbfb;
+	}
+
+.ffffff{
+	background-color:#ffffff;
+	}	
+
+.left_td {
+	width:115px;
+	border-right: 1px solid #ededed;	
+	}
+
+.right_ {
+	background-image: url(../images/default/user_index/right_bg.jpg);
+	background-repeat: no-repeat;
+	width:510px;
+	height:391px;
+	}				
+
+.button_off {
+	background-image: url(../images/default/user_index/button_off.jpg);
+	background-repeat: no-repeat;
+	width:104px;
+	height:104px;
+	line-height:104px;
+	text-align:center;
+	background-attachment: scroll;
+	position:absolute;
+	left:0px;
+	top:0px;
+	z-index:99;
+	color:#8e6408;
+	font-weight: bold;	
+	}
+
+.button_on {
+	background-image: url(../images/default/user_index/button_on.jpg);
+	background-repeat: no-repeat;
+	width:104px;
+	height:104px;
+	line-height:104px;
+	text-align:center;
+	background-attachment: scroll;
+	position:absolute;
+	left:0px;
+	top:0px;
+	z-index:99;
+	color:#fff;
+	font-weight: bold;	
+	}
+
+.info_title {
+	position:absolute;
+	left:0px;
+	top:0px;
+	z-index:90;
+	color:#fff;
+	width:200px;
+	height:100px;
+	vertical-align:middle;
+	text-align:center;
+	font-weight: bold;
+	line-height:100px;
+	}
+
+.info_box {
+	background-image: url(../images/default/user_index/infobox.gif);
+	background-repeat: no-repeat;
+	width:191px;
+	height:196px;
+	text-align:left;
+	background-attachment: scroll;
+	position:absolute;
+	left:0px;
+	top:0px;
+	z-index:99;
+	color:#fff;
+	display:none;
+	}	
+
+.info_box2 {
+	background-image: url(../images/default/user_index/infobox2.gif);
+	background-repeat: no-repeat;
+	width:191px;
+	height:196px;
+	text-align:left;
+	background-attachment: scroll;
+	position:absolute;
+	left:0px;
+	top:0px;
+	z-index:99;
+	color:#fff;
+	display:none;
+	}
+
+.info {
+	margin-left:30px;
+	margin-top:10px;	
+	color:#000;
+	width:162px;
+	height:180px;
+	display:block;
+	font-size:12px;
+	font-family:"SimSun";	
+	}
+
+.info2 {
+	margin-left:10px;
+	margin-top:10px;	
+	color:#000;
+	width:162px;
+	height:180px;
+	display:block;
+	font-size:12px;
+	font-family:"SimSun";
+	}							

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<weblogic-web-app xmlns="http://www.bea.com/ns/weblogic/90">
+
+	<session-descriptor>
+	   <timeout-secs>1800</timeout-secs>
+	</session-descriptor>
+	
+	<jsp-descriptor>
+	   <page-check-seconds>-1</page-check-seconds>
+	   <verbose>false</verbose>
+	   <encoding>GBK</encoding>
+	</jsp-descriptor>
+
+	<container-descriptor>
+		<servlet-reload-check-secs>-1</servlet-reload-check-secs>
+		<prefer-web-inf-classes>true</prefer-web-inf-classes>  
+	</container-descriptor>
+
+	<context-root>/crmweb</context-root>
+
+</weblogic-web-app>
+

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+
+		<!-- 数据权限过滤器 -->
+		<bean name="dataAuthManager" class="com.yuchengtech.crm.dataauth.managerment.DataAuthManager" factory-method="getInstance" init-method="initialize">
+			<property name="filterLoader" ref="filterLoader"></property>
+		</bean>
+		<!-- ehCache管理器 -->
+		<bean name="ehCacheManager" class="com.yuchengtech.crm.ehcache.EhCacheManager" factory-method="getInstance">
+		</bean>
+
+		<!-- 数据字典管理器 -->
+		<bean name="lookupManager" class="com.yuchengtech.bob.core.LookupManager" factory-method="getInstance" init-method="initialize" >
+			<property name="dsOracle" ref="dsOracle"></property>
+		</bean>
+
+		<!-- 菜单数据管理器 -->
+		<bean name="menuManager" class="com.yuchengtech.bob.core.MenuManager" factory-method="getInstance" init-method="initialize" >
+			<property name="dsOracle" ref="dsOracle"></property>
+		</bean>
+		
+		<!-- 菜单数据管理器 -->
+		<bean name="exportImportManager" class="com.yuchengtech.bob.core.ExportImportManager" factory-method="getInstance">
+		</bean>
+		
+		<!-- 菜单数据管理器 -->
+		<bean name="importTradeManage" class="com.yuchengtech.bob.upload.ImportTradeManage" factory-method="getInstance" init-method="initialize">
+		</bean>
+		
+		<!-- 公共参数管理器 -->
+		<bean name="sysPublicParamManager" class="com.yuchengtech.bob.core.SysPublicParamManager" factory-method="getInstance" init-method="initialize">
+			<property name="dsOracle" ref="dsOracle"></property>
+		</bean>
+
+		<bean name="crmLisenceManager" class="com.yuchengtech.bob.core.CrmLisenceManager" factory-method="getInstance" init-method="initialize">
+			<property name="lisenceModel" >
+				<value>${lisenceModel}</value>
+			</property>
+			<property name="licenseFile">
+				<value>${licenseFile}</value>
+			</property>
+		</bean>
+		<!-- 前台版本管理器 -->
+		<bean name="versionInformation" class="com.yuchengtech.crm.version.VersionInformation" factory-method="getInstance" init-method="initialize">
+			<property name="frontVersion" >
+				<value>${crm.front.version}</value>
+			</property>
+		</bean>
+		
+
+
+
+</beans>

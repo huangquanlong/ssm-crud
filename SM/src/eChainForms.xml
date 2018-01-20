@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<forms>
+	<form id = "qjsp_apply" name = "请假审批单" url="" bz="">
+			<field id="title" name="审批意见"/>
+			<field id="content" name="备注"/>
+		</form>
+	
+		<form id = "xypj_apply" name = "评级申请单" url="" bz="">
+			<field id="title" name="标题"/>
+			<field id="content" name="内容"/>
+		</form>
+		<form id = "xypj_apply" name = "评级申请单" url="" bz="">
+			<field id="title" name="标题"/>
+			<field id="content" name="内容"/>
+		</form>
+		<form id = "zhsx_apply" name = "授信申请单" url="" bz="">
+			<field id="flowno" name="流水号"/>
+			<field id="customerid" name="客户ID"/>
+			<field id="customername" name="客户名称"/>
+			<field id="edsqtype" name="额度申请类型"/>
+			<field id="hbtype" name="货币种类">
+				<property key="CNY" value="人民币"/>
+				<property key="HKD" value="港元"/>
+				<property key="FRF" value="法国法郎"/>
+				<property key="CHF" value="瑞士法郎"/>
+				<property key="USD" value="美元"/>
+				<property key="GBP" value="英镑"/>
+				<property key="CAD" value="加拿大元"/>
+			</field>
+			<field id="bgsy" name="变更事由" length="1000"/>
+			<field id="jbrid" name="经办人ID"/>
+			<field id="jbrname" name="经办人"/>
+			<field id="jbdate" name="经办日期"/>
+			<field id="jbjgid" name="经办机构ID"/>
+			<field id="jbjgname" name="经办机构"/>
+		</form>
+		<form id = "zhsx_edsq" name = "额度申请单" url="" bz="">
+			<field id="title" name="标题"/>
+			<field id="content" name="内容"/>
+		</form>
+		
+		<app id="xypj" name="信用评级" supid="">
+			<form id = "xypj_apply"/>
+		</app>
+		<app id="zhsx" name="综合授信" supid="">
+			<form id = "zhsx_apply"/>
+			<form id = "zhsx_edsq"/>
+		</app>
+		
+		<app id="0" name="内部信用额度" supid=""/>
+		<app id="001" name="内部基本授信" supid="0"/>
+		<app id="002" name="内部特别授信" supid="0"/>
+		<app id="1" name="表内业务" supid=""/>
+		<app id="101" name="公司贷款" supid="1"/>
+		<app id="10101" name="公司流动资金贷款" supid="101"/>
+		<app id="10102" name="公司固定资产贷款" supid="101"/>
+		<app id="1010201" name="公司住房开发贷款" supid="10102"/>
+		<app id="1010202" name="公司商用房开发贷款" supid="10102"/>
+		<app id="1010203" name="项目贷款" supid="10102"/>
+		<app id="1010204" name="基建贷款" supid="10102"/>
+		<app id="1010205" name="技术改造贷款" supid="10102"/>
+		<app id="1010206" name="租赁贷款" supid="10102"/>
+		<app id="1010207" name="国内买方信贷" supid="10102"/>
+		<app id="1010208" name="工业厂房开发贷款" supid="10102"/>
+		<app id="1010209" name="土地储备贷款" supid="10102"/>
+		<app id="1010210" name="廉租房建设开发贷款" supid="10102"/>
+		<app id="1010299" name="其他固定资产贷款" supid="10102"/>
+		<app id="10103" name="公司消费按揭贷款" supid="101"/>
+		<app id="1010301" name="公司住房按揭贷款" supid="10103"/>
+		<app id="1010302" name="公司商用房按揭贷款" supid="10103"/>
+		<app id="1010303" name="公司办公房按揭贷款" supid="10103"/>
+		<app id="1010304" name="公司汽车按揭贷款" supid="10103"/>
+		<app id="1010305" name="公司厂房贷款" supid="10103"/>
+		<app id="1010399" name="公司其他消费按揭贷款" supid="10103"/>
+		<app id="10104" name="公司协议透支" supid="101"/>
+		<app id="1010401" name="公司结算帐户透支" supid="10104"/>
+		<app id="1010499" name="公司其他透支" supid="10104"/>
+		<app id="10105" name="节能减排贷款" supid="101"/>
+		<app id="1010501" name="能效金融贷款" supid="10105"/>
+		<app id="1010502" name="环境金融贷款" supid="10105"/>
+		<app id="1010503" name="碳金融贷款" supid="10105"/>
+		<app id="10107" name="公司流动资金循环贷款" supid="101"/>
+		<app id="102" name="贸易融资" supid="1"/>
+		<app id="10201" name="进口押汇" supid="102"/>
+		<app id="1020101" name="即期证进口押汇" supid="10201"/>
+		<app id="1020102" name="远期证进口押汇" supid="10201"/>
+		<app id="1020103" name="即期代收押汇" supid="10201"/>
+		<app id="1020104" name="远期代收押汇" supid="10201"/>
+		<app id="1020105" name="汇出汇款项下进口押汇" supid="10201"/>
+		<app id="10202" name="打包放款" supid="102"/>
+		<app id="1020201" name="即期证打包" supid="10202"/>
+		<app id="1020202" name="远期证打包" supid="10202"/>
+		<app id="1020203" name="即期托收打包" supid="10202"/>
+		<app id="1020204" name="远期托收打包" supid="10202"/>
+		<app id="10203" name="出口押汇" supid="102"/>
+		<app id="1020301" name="即期证出口押汇" supid="10203"/>
+		<app id="1020302" name="远期证出口押汇" supid="10203"/>
+		<app id="1020303" name="即期托收押汇" supid="10203"/>
+		<app id="1020304" name="远期托收押汇" supid="10203"/>
+		<app id="1020305" name="汇入汇款项下出口押汇" supid="10203"/>
+		<app id="10204" name="议付国内信用证款项" supid="102"/>
+		<app id="1020401" name="即期证议付" supid="10204"/>
+		<app id="1020402" name="远期证议付" supid="10204"/>
+		<app id="1020403" name="即期托收议付" supid="10204"/>
+		<app id="1020404" name="远期托收议付" supid="10204"/>
+		<app id="10205" name="国内保理融资" supid="102"/>
+		<app id="1020501" name="国内卖方保理融资" supid="10205"/>
+		<app id="1020502" name="国内买方保理" supid="10205"/>
+		<app id="10206" name="国际保理融资" supid="102"/>
+		<app id="1020601" name="出口保理融资" supid="10206"/>
+		<app id="1020602" name="进口保理" supid="10206"/>
+		<app id="10207" name="国内信用证项下贷款" supid="102"/>
+		<app id="103" name="票据融资" supid="1"/>
+		<app id="10301" name="票据直贴" supid="103"/>
+		<app id="1030101" name="本行承兑汇票贴现" supid="10301"/>
+		<app id="1030102" name="他行承兑汇票贴现" supid="10301"/>
+		<app id="1030103" name="商业承兑汇票贴现" supid="10301"/>
+		<app id="10302" name="买入外币票据" supid="103"/>
+		<app id="10303" name="福费庭" supid="103"/>
+		<app id="3" name="表外业务" supid=""/>
+		<app id="301" name="银行承兑汇票" supid="3"/>
+		<app id="302" name="信用证" supid="3"/>
+		<app id="30201" name="国外信用证" supid="302"/>
+		<app id="3020101" name="国外即期信用证" supid="30201"/>
+		<app id="3020102" name="国外远期信用证" supid="30201"/>
+		<app id="30202" name="国内信用证" supid="302"/>
+		<app id="3020201" name="国内即期信用证" supid="30202"/>
+		<app id="3020202" name="国内远期信用证" supid="30202"/>
+		<app id="303" name="保函" supid="3"/>
+		<app id="30301" name="融资性保函" supid="303"/>
+		<app id="3030101" name="借款保函" supid="30301"/> 
+		<app id="3030102" name="租赁保函" supid="30301"/>
+		<app id="3030103" name="透支保函" supid="30301"/>
+		<app id="3030104" name="买方预付款保函" supid="30301"/>
+		<app id="3030105" name="关税保付保函" supid="30301"/>
+		<app id="3030106" name="留置金保函" supid="30301"/>
+		<app id="3030199" name="其他融资性保函" supid="30301"/>
+		<app id="30302" name="非融资性保函" supid="303"/>
+		<app id="3030201" name="投标保函" supid="30302"/>
+		<app id="3030202" name="履约保函" supid="30302"/>
+		<app id="3030203" name="承包工程保函" supid="30302"/>
+		<app id="3030204" name="质量维修保函" supid="30302"/>
+		<app id="3030205" name="诉讼保函" supid="30302"/>
+		<app id="3030206" name="海关网上支付担保文书" supid="30302"/>
+		<app id="3030207" name="卖方预付款保函" supid="30302"/>
+		<app id="3030299" name="其他非融资性保函" supid="30302"/>
+		<app id="30303" name="备用信用证" supid="303"/>
+		<app id="304" name="担保" supid="3"/>
+		<app id="30401" name="贷款担保" supid="304"/>
+		<app id="30402" name="有价证券发行担保" supid="304"/>
+		<app id="3040201" name="可转换债券发行担保" supid="30402"/>
+		<app id="3040299" name="其他债券发行担保" supid="30402"/>
+		<app id="30403" name="提货担保" supid="304"/>
+		<app id="30404" name="提货备书" supid="304"/>
+		<app id="30499" name="其他担保" supid="304"/>
+		<app id="4" name="承诺类业务" supid=""/>
+		<app id="401" name="对外授信" supid="4"/>
+		<app id="40101" name="对外基本授信" supid="401"/>
+		<app id="40102" name="对外特别授信" supid="401"/>
+		<app id="402" name="贷款承诺" supid="4"/>
+		<app id="40201" name="无条件贷款承诺" supid="402"/>
+		<app id="40202" name="有条件贷款承诺" supid="402"/>
+		<app id="403" name="贷款意向" supid="4"/>
+		<app id="404" name="银行信贷证明" supid="4"/>
+		<app id="405" name="担保意向" supid="4"/>   
+		<app id="5" name="第三方额度" supid=""/>
+		<app id="501" name="商业承兑汇票贴现额度" supid="5"/>
+		<app id="502" name="对外担保额度" supid="5"/>
+		<app id="503" name="按揭贷款额度" supid="5"/>
+		<app id="50301" name="住房按揭贷款额度" supid="503"/>
+		<app id="50302" name="商用房按揭贷款额度" supid="503"/>
+		<app id="50303" name="汽车按揭贷款额度" supid="503"/>
+		<app id="50304" name="买方信贷担保额度" supid="503"/>
+		<app id="50399" name="其他按揭贷款额度" supid="503"/>
+		<app id="504" name="同业客户融资额度" supid="5"/>
+		<app id="6" name="同业业务" supid=""/>
+		<app id="608" name="证券公司股票质押贷款" supid="6"/>
+		<app id="7" name="自营非标业务" supid=""/>
+		<app id="701" name="非标投资业务" supid="7"/>
+		<app id="702" name="融资类理财产品基础资产业务" supid="7"/>
+		<app id="9" name="非自营业务" supid=""/>
+		<app id="901" name="委托贷款" supid="9"/>
+		<app id="90101" name="中央银行委托贷款" supid="901"/>   
+		<app id="90102" name="单位委托贷款" supid="901"/>
+		<app id="90103" name="公积金委托贷款" supid="901"/>
+		<app id="90104" name="个人委托贷款" supid="901"/>
+		<app id="902" name="非自营业务" supid="9"/>
+		<app id="90201" name="证券化代管理贷款" supid="902"/>
+		<app id="90202" name="信贷资产转让代管理贷款" supid="902"/>
+		<app id="90203" name="银团代理贷款" supid="902"/>
+		
+</forms>

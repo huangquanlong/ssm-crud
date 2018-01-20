@@ -1,0 +1,63 @@
+package com.yuchengtech.crm.constance.fusioncharts;
+
+public class FusionChartsFiles {
+	
+	public static final String ANGULARGAUGE = "AngularGauge.swf";
+	public static final String AREA2D = "Area2D.swf";
+	public static final String BAR2D = "Bar2D.swf";
+	public static final String BUBBLE = "Bubble.swf";
+	public static final String COLUMN2D = "Column2D.swf";
+	public static final String COLUMN3D = "Column3D.swf";
+	public static final String DOUGHNUT2D = "Doughnut2D.swf";
+	public static final String DOUGHNUT3D = "Doughnut3D.swf";
+	public static final String FCEXPORTER = "FCExporter.swf";
+	public static final String FUNNEL = "Funnel.swf";
+	public static final String HLINEARGAUGE = "HLinearGauge.swf";
+	public static final String INVERSEMSAREA = "InverseMSArea.swf";
+	public static final String INVERSEMSCOLUMN2D = "InverseMSColumn2D.swf";
+	public static final String INVERSEMSLINE = "InverseMSLine.swf";
+	public static final String LINE = "Line.swf";
+	public static final String LOGMSCOLUMN2D = "LogMSColumn2D.swf";
+	public static final String LOGMSLINE = "LogMSLine.swf";
+	public static final String MARIMEKKO = "Marimekko.swf";
+	public static final String MSAREA = "MSArea.swf";
+	public static final String MSBAR2D = "MSBar2D.swf";
+	public static final String MSBAR3D = "MSBar3D.swf";
+	public static final String MSCOLUMN2D = "MSColumn2D.swf";
+	public static final String MSCOLUMN3D = "MSColumn3D.swf";
+	public static final String MSCOLUMN3DLINEDY = "MSColumn3DLineDY.swf";
+	public static final String MSCOLUMNLINE3D = "MSColumnLine3D.swf";
+	public static final String MSCOMBI2D = "MSCombi2D.swf";
+	public static final String MSCOMBI3D = "MSCombi3D.swf";
+	public static final String MSCOMBIDY2D = "MSCombiDY2D.swf";
+	public static final String MSLINE = "MSLine.swf";
+	public static final String MSSPLINE = "MSSpline.swf";
+	public static final String MSSPLINEAREA = "MSSplineArea.swf";
+	public static final String MSSTACKEDCOLUMN2D = "MSStackedColumn2D.swf";
+	public static final String MSSTACKEDCOLUMN2DLINEDY = "MSStackedColumn2DLineDY.swf";
+	public static final String PARETO2D = "Pareto2D.swf";
+	public static final String PARETO3D = "Pareto3D.swf";
+	public static final String PIE2D = "Pie2D.swf";
+	public static final String PIE3D = "Pie3D.swf";
+	public static final String PYRAMID = "Pyramid.swf";
+	public static final String SCATTER = "Scatter.swf";
+	public static final String SCROLLAREA2D = "ScrollArea2D.swf";
+	public static final String SCROLLCOLUMN2D = "ScrollColumn2D.swf";
+	public static final String SCROLLCOMBI2D = "ScrollCombi2D.swf";
+	public static final String SCROLLCOMBIDY2D = "ScrollCombiDY2D.swf";
+	public static final String SCROLLLINE2D = "ScrollLine2D.swf";
+	public static final String SCROLLSTACKEDCOLUMN2D = "ScrollStackedColumn2D.swf";
+	public static final String SPLINE = "Spline.swf";
+	public static final String SPLINEAREA = "SplineArea.swf";
+	public static final String SSGRID = "SSGrid.swf";
+	public static final String STACKEDAREA2D = "StackedArea2D.swf";
+	public static final String STACKEDBAR2D = "StackedBar2D.swf";
+	public static final String STACKEDBAR3D = "StackedBar3D.swf";
+	public static final String STACKEDCOLUMN2D = "StackedColumn2D.swf";
+	public static final String STACKEDCOLUMN2DLINE = "StackedColumn2DLine.swf";
+	public static final String STACKEDCOLUMN3D = "StackedColumn3D.swf";
+	public static final String STACKEDCOLUMN3DLINE = "StackedColumn3DLine.swf";
+	public static final String STACKEDCOLUMN3DLINEDY = "StackedColumn3DLineDY.swf";
+	public static final String ZOOMLINE = "ZoomLine.swf";
+	
+}

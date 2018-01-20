@@ -1,0 +1,46 @@
+/** vim: ts=4:sw=4:nu:fdc=4:nospell
+ *
+ * Ext.ux.form.LovCombo CSS File
+ *
+ * LGPL 3.0 license. Commercial use is permitted to the extent that the 
+ * code/component(s) do NOT become part of another Open Source or Commercially
+ * licensed development library or toolkit without explicit permission.
+ * 
+ * License details: http://www.gnu.org/licenses/lgpl.html
+ */
+
+.ux-lovcombo-icon {
+	width:16px;
+	height:16px;
+	float:left;
+	background-position: -1px -1px ! important;
+	background-repeat:no-repeat ! important;
+}
+.ux-lovcombo-list-item {
+	border:1px solid;
+	white-space: nowrap;
+	overflow:hidden;
+	text-overflow: ellipsis;
+	marker-offset: 5px;
+}
+.ux-lovcombo-icon-checked {
+	padding:0px 0px 0px 0px;
+	width:15px;
+	height:15px;
+	marker-offset: 5px;
+	background: url(../images/checked.gif);
+}
+.ux-lovcombo-icon-unchecked {
+	padding:0px 0px 0px 0px;
+	width:15px;
+	height:15px;
+	marker-offset: 5px;
+	background: transparent url(../images/unchecked.gif);
+}
+.ux-lovcombo-item-text {
+	margin-top: -5px;
+	height:17px;
+	line-height:17px;
+	vertical-align:middle;
+}
+

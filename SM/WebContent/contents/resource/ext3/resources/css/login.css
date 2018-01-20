@@ -1,0 +1,157 @@
+@charset "utf-8";
+/* CSS Document */
+/*
+Copyright (C) 2011 YUCHENGTECH CORPORATION
+Code_File:login.css
+Revision 1.0  2011/09/01 10:06:46 ShenC	
+*/
+ 
+.oneregional001 {
+	/* edit region begin */
+	width:1024px;
+	min-width:1024px;
+	background-image: url(../images/default/login/login_bg_.jpg);	
+	background-repeat: no-repeat;
+	height:640px;	
+	/* edit region end */
+	_zoom:1;
+	margin: 0px auto;
+	}
+
+/* ------center box begin------ */
+.oneregional001 .centerbox_out {
+	width:100%; 
+	margin:0 0px 0 0px; 
+	float:left;
+	}
+.oneregional001 .centerbox_in {
+	/* edit region begin */
+	/* edit region end */
+	margin: 0 0px 0 0px;			 
+	}
+/*------center box end------*/	
+
+
+/* HTML begin */
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, a, img, strong, li, ol, ul, form, label, table, caption, tfoot, thead, tr, th, td{
+	padding:0px 0px 0px 0px;
+	margin:0px 0px 0px 0px;	
+}	
+
+html{
+	margin:0 auto;
+	/* edit region begin */	
+	text-align: center;
+	/* edit region end */
+	}
+/* HTML end */
+
+/* BODY begin */
+body {
+	text-align:left;
+	font-family:Arial,sans-serif;/* edit region */
+	margin: 0 auto;/* edit region */
+	background-image: url(../images/default/login/login_bg.jpg);
+	background-repeat: repeat;
+}
+/* BODY end */
+
+/* h1 h2 h3 h4 h5 h6 h7 h8 begin */
+	h1,h2,h3,h4,h5,h6,h7,h8{
+	font-family:SimSun,Arial,sans-serif;/* edit region */	
+	margin:0px;
+	padding:0px;
+	}
+h6 {
+	font-size:20px;
+	
+}	
+/* h1 h2 h3 h4 h5 h6 h7 end */
+
+/* image begin */
+ img{
+	border:none;
+	}
+/* image end */
+		
+
+/* FORM begin */
+form {
+	margin:0px;
+	padding:0px;
+	}
+/* FORM end */
+
+/* HR begin */
+hr {
+	margin:0px;
+	clear:both;
+	}
+/* HR end */
+
+
+/* ------------------public begin------------------ */
+a:link{
+	color:#ffffff;
+	text-decoration:none;
+	font-family:SimSun;
+	}
+a:visited{
+	color:#ffffff;
+	text-decoration:none;
+	font-family:SimSun;
+	}
+a:active{
+	color:#ffffff;
+	text-decoration:none;
+	font-family:SimSun;
+	}
+a:hover{
+	color:#ffffff;
+	text-decoration:underline;
+	font-family:SimSun;
+	}
+/* a link end */
+	
+/* ------------------public end------------------ */	
+
+
+.login_input{
+	position:absolute;
+	left:0px;
+	top:0px;
+	}
+
+.login_input ul{
+	font-size:12px;
+	font-family:"SimSun";
+	list-style:none;
+	}
+
+.login_input li{
+	list-style:none;
+	line-height:30px;
+	height:30px;
+	}		
+
+.login_input .title{
+	font-weight: bold;
+	color:#950000;
+	}	
+
+.login_input input {
+	width:160px;
+	}
+
+.login_input_button{
+	position:absolute;
+	left:0px;
+	top:0px;
+	background-image: url(../images/default/login/button.jpg);
+	background-repeat: repeat;
+	background-position: left top;
+	width:67px;
+	height:66px;
+	cursor:pointer;
+	}	

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "-//log4j/log4j Configuration//EN" "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<appender name="ASYNC" class="org.apache.log4j.AsyncAppender">
+		<appender-ref ref="LOGFILE_eChain" />
+		<appender-ref ref="STDOUT" />
+	</appender>
+	<appender name="LOGFILE_eChain" class="org.apache.log4j.FileAppender">
+		<param name="File" value="D:/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/pamweb/echain/echainstudio/eChain.log" />
+		<param name="Append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} %-5p %10c - %m%n" />
+		</layout>
+	</appender>
+	<appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} %-5p %10c - %m%n" />
+		</layout>
+	</appender>
+	
+	<category name="eChain">
+		<priority value="debug" />
+		<appender-ref ref="LOGFILE_eChain" />
+	</category>
+	
+	<root>
+		<priority value="error" />
+		<appender-ref ref="ASYNC" />
+	</root>
+</log4j:configuration>

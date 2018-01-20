@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="pmsweb" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>pmsweb</display-name>
+
+	<context-param>
+	    <param-name>webAppRootKey</param-name>
+	    <param-value>webapp.root.pmsbasepath</param-value>
+	 </context-param>
+	 
+	<!--由Spring载入的Log4j配置文件位置-->
+	<context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<param-value>/WEB-INF/log4j.properties</param-value>
+	</context-param>
+	
+	<!--Spring默认刷新Log4j配置文件的间隔,单位为millisecond-->
+	 <context-param>
+	     <param-name>log4jRefreshInterval</param-name>
+	     <param-value>60000</param-value>
+	 </context-param>
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			classpath*:applicationContext.xml 
+		</param-value>
+	</context-param>
+	
+	<!-- File upload -->
+    <servlet>
+        <servlet-name>fileUpload</servlet-name>
+        <servlet-class>com.yuchengtech.bob.upload.FileUploadServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>uploadStatus</servlet-name>
+        <servlet-class>com.yuchengtech.bob.upload.AjaxUploadStatusServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>fileUpload</servlet-name>
+        <url-pattern>/FileUpload</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>uploadStatus</servlet-name>
+        <url-pattern>/UploadStatus</url-pattern>
+    </servlet-mapping>
+    
+    <!-- File download -->
+    <servlet>
+        <servlet-name>fileDownload</servlet-name>
+        <servlet-class>com.yuchengtech.bob.upload.FileDownloadServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>fileDownload</servlet-name>
+        <url-pattern>/FileDownload</url-pattern>
+    </servlet-mapping>
+    <!-- ANNEXE download -->
+    <servlet>
+        <servlet-name>annexeDownload</servlet-name>
+        <servlet-class>com.yuchengtech.bob.upload.AnneFileDownloadServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>annexeDownload</servlet-name>
+        <url-pattern>/AnnexeDownload</url-pattern>
+    </servlet-mapping>
+    <!-- import template file down servlet -->
+    <servlet>
+        <servlet-name>tempDownload</servlet-name>
+        <servlet-class>com.yuchengtech.bob.upload.TemplateFileDownServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>tempDownload</servlet-name>
+        <url-pattern>/TempDownload</url-pattern>
+    </servlet-mapping>
+    
+	<!-- Spring encodingFilter -->
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	
+	<!-- Spring Security Filter-->
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	
+	<!-- Filter-mapping -->
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<!-- <url-pattern>*.json</url-pattern>-->
+		<!-- <url-pattern>*.jsp</url-pattern>-->
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+	</filter-mapping>
+	
+	<!-- CrmSessionFilter Filter -->
+	<filter>
+		<filter-name>crmSessionFilter</filter-name>
+		<filter-class>com.yuchengtech.crm.filter.CrmSessionFilter</filter-class>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>crmSessionFilter</filter-name>
+			<url-pattern>*.json</url-pattern>
+			<!-- <url-pattern>/*</url-pattern>-->
+	</filter-mapping>
+	
+	<filter>
+		<filter-name>strutsFilter</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>strutsFilter</filter-name>
+		<url-pattern>*.json</url-pattern>
+	</filter-mapping>
+	<!-- 产品介绍图片导入  -->
+	<filter-mapping>
+		<filter-name>strutsFilter</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+	</filter-mapping> 
+
+
+	<welcome-file-list>
+		<welcome-file>login.jsp</welcome-file>
+		<welcome-file>testlogin.jsp</welcome-file>		
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+
+	<!-- Spring -->
+	<listener>
+		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+	</listener>
+	
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+	<!-- Spring HttpSessionEvent Listener -->
+	<listener>
+		<listener-class>
+			org.springframework.security.web.session.HttpSessionEventPublisher
+		</listener-class>
+	</listener>
+	
+	<!-- 设置session 超时时间  单位：分钟  --> 
+	<session-config> 
+	  <session-timeout>30</session-timeout> 
+	</session-config> 
+	<!-- add exception controller -->
+	<servlet>
+		<servlet-name>bipExceptionController</servlet-name>
+		<servlet-class>com.yuchengtech.crm.exception.BipExceptionController</servlet-class>
+		<load-on-startup>0</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>bipExceptionController</servlet-name>
+		<url-pattern>/engine/exception</url-pattern>
+	</servlet-mapping>
+
+	<error-page>
+		<error-code>500</error-code>
+		<location>/engine/exception</location>
+	</error-page>
+	<!-- add end -->
+	<!-- Echain工作流配置  --> 
+	<servlet>
+    	<servlet-name>echaincommonservlet</servlet-name>
+    	<servlet-class>com.ecc.echain.workflow.servlet.EChainCommonServlet</servlet-class>
+  	</servlet>
+ 
+	<servlet> 
+    	<servlet-name>monitorservlet</servlet-name> 
+    	<servlet-class>com.ecc.echain.workflow.servlet.MonitorServlet</servlet-class> 
+	</servlet> 
+	<servlet> 
+		<servlet-name>definitionservlet</servlet-name> 
+		<servlet-class>com.ecc.echain.workflow.servlet.DefinitionServlet</servlet-class> 
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>echaincommonservlet</servlet-name>
+		<url-pattern>/echaincommonservlet</url-pattern>
+	</servlet-mapping>
+	<servlet> 
+		<servlet-name>studiojnlpservlet</servlet-name> 
+		<servlet-class>com.yuchengtech.bcrm.echain.StudioJNLPServlet</servlet-class> 
+	</servlet> 
+	<servlet-mapping> 
+		<servlet-name>studiojnlpservlet</servlet-name> 
+		<url-pattern>/echainstudio.jnlp</url-pattern> 
+	</servlet-mapping> 
+	<servlet-mapping> 
+		<servlet-name>monitorservlet</servlet-name> 
+		<url-pattern>/monitorservlet</url-pattern> 
+	</servlet-mapping> 
+	<servlet-mapping> 
+		<servlet-name>definitionservlet</servlet-name> 
+		<url-pattern>/definitionservlet</url-pattern> 
+	</servlet-mapping>
+	
+  	<jsp-config>
+		<taglib>
+    		<taglib-uri>/VersionControlTag</taglib-uri>
+    		<taglib-location>/WEB-INF/versionControlTag.tld</taglib-location>
+  		</taglib>
+  	</jsp-config>
+</web-app>

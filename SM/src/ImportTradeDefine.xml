@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<root>
+    <!-- 
+        tradeCode:交易码， 用以确定每一个业务逻辑模块唯一的导入交易。
+        tableName：表名，后台物理表中用以存储导入数据的临时表名。
+        valiClass：数据从临时表到实际业务表的逻辑实现类名，该类实现com.yuchengtech.bob.importimpl.ImportInterface接口。如不填写，则默认为com.yuchengtech.bob.importimpl.DefaultImpl类.
+        sheetStartIndex:导入EXCEL文件中，导入数据的起始页签,默认为0。
+        creatorColumn=临时表中“创建人”的列名，该列不在column中配置。
+        creatOrgColumn=临时表中“创建机构”的列名，该列不在column中配置。
+        creatDateColumn=临时表中“创建日期”的列名，该列不在column中配置。
+                                    列定义：
+                name：中文名称；
+                columnIndex:该列对应数据在导入的EXCEL sheet中所出列数（从0开始计数）。
+                fieldCode：该列数据对应的临时表中的列名。
+                isPk:是否主键，主键生成策略：IMP_+导入批次号_+sheet页号_+数据行号.主键请在物理表中定义为varchar2类型,且长度在30以上。
+                type:数据类型。目前主要使用3中数据类型校验，“NUMBER”,"VARCHAR2","DATE"类型，默认按VARCHAR2类型处理。
+                length:数据长度,默认为0。
+                precial:数据精度，默认为0。
+                isNull：可否为空，默认为false。
+                                    数据处理策略：
+                                           数字类型：超出长度精度部分，整数部分截取右边，小数部分截取左边。isNull="false"，且数据为空时，取0,长度为0，则不处理.
+                                           字符串类型：查出长度部分，截取右边，长度为0，则不处理。
+                                          日期数据：对于不合法数据，置空，如不可为空，则置为当前时间，长度为0，则不处理。
+     -->
+    <trade tradeCode="ImportTest" tableName="A_IMPORT_TEST" valiClass="" sheetStartIndex="1" creatorColumn="CREATOR" creatOrgColumn="CREATORORG" creatDateColumn="CREATORDATE">
+        <column name="主键" columnIndex="2" fieldCode="IDPK" isPK="true" type="VARCHAR2" length="" precial="" isNull="false"></column>
+        <column name="var数据" columnIndex="3" fieldCode="DATAVAR" isPK="false" type="VARCHAR2" length="10" precial="" isNull="true"></column>
+        <column name="num数据" columnIndex="4" fieldCode="DATANUM" isPK="false" type="NUMBER" length="" precial="" isNull="true"></column>
+        <column name="日期数据" columnIndex="5" fieldCode="DATADATE" isPK="false" type="DATE" length="" precial="" isNull="true"></column>
+   	</trade>  
+   <!--模型导入-->
+   <trade tradeCode="modelDesignImport" tableName="ppmp_ds_model_import_tmp" valiClass="com.yuchengtech.bob.action.ModelDesignImport" sheetStartIndex="0" creatorColumn="" creatOrgColumn="" creatDateColumn="">
+   	  <column name="ID" columnIndex="0" fieldCode="ID" isPK="true" type="VARCHAR2" length="32" precial="" isNull="false"></column>
+   	  <column name="字段英文名"  columnIndex="1"  fieldCode="FIELD_NAME_EN"  isPK="false"  type="VARCHAR2"  length="255"  precial=""  isNull="true"></column>
+   	  <column name="字段中文名"  columnIndex="2"  fieldCode="FIELD_NAME_CH"  isPK="false"  type="VARCHAR2"  length="255"  precial=""  isNull="true"></column>
+   	  <column name="字段类型"  columnIndex="3"  fieldCode="TYPE"  isPK="false"  type="VARCHAR2"  length="20"  precial=""  isNull="true"></column>
+   	  <column name="字段是否为主键"  columnIndex="4"  fieldCode="IS_PRI_KEY"  isPK="false"  type="VARCHAR2"  length="20"  precial=""  isNull="true"></column>
+   	  <column name="字段是否为空"  columnIndex="5"  fieldCode="IS_NULL"  isPK="false"  type="VARCHAR2"  length="20"  precial=""  isNull="true"></column>
+      <column name="字段说明"  columnIndex="6"  fieldCode="F_REMARK"  isPK="false"  type="VARCHAR2"  length="1000"  precial=""  isNull="true"></column>
+   </trade>
+</root>

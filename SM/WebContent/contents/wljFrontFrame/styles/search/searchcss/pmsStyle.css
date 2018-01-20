@@ -1,0 +1,71 @@
+﻿/*
+create date：2015-02-10 12:50
+created by：YuchengTech-UedTeam-WY
+file name：pmsStyle.css
+remark：pms styles
+last update：2015-02-12 11:05
+*/
+
+/*01-common sta*/
+body,td,th{font-size:12px;color:#222;outline:none;}
+*{font-family:微软雅黑,宋体;}
+body{background-color:#fff;margin:0;padding:0;}
+div,ul,li,form,p,h1,i,hr{margin:0;padding:0;list-style:none;border:none;}
+img{border:none;}
+input,textarea{outline:none;resize:none;}
+a:link,a:visited{font-size:12px;color:#005bac;text-decoration:none;outline:none;}
+a:hover{color:#222;text-decoration:none;}
+a:active{color:#222;}
+.cl{clear:both;width:0;height:0;font-size: 0;line-height: 0;}
+/*01-common end*/
+
+/*02-pms sta*/
+#pmsContainer{height:auto;}
+.pmsBox { float:left; padding:10px;border-left:1px #ececec solid;}
+.pmsTitle{clear:left;height:90px;}
+.pmsContent{clear:left;}
+
+.pmsNode {float:left; padding-left:25px;padding-right:25px; height:80px;line-height:80px;  color:#fff; font-size:16px; font-weight:bold;border-radius:5px; cursor:pointer;}
+.pmsArrow{float:left; height:80px;background:url(../searchpics/pms/pic_01.gif) right center no-repeat;margin-left:10px; }
+
+.pmsStatus1,.pmsStatus2,.pmsStatus3,.pmsStatus4,.trs1,.trs2,.trs3,.trs4{background-position:bottom center;background-repeat:no-repeat;}
+.trs0{background-color: #ececec;}
+.pmsStatus1,.trs1 {background-image:url(../searchpics/pms/pic_02_1_u.gif);background-color: #a2a2a2;}/*灰*/
+.pmsStatus2,.trs2 {background-image:url(../searchpics/pms/pic_02_2_u.gif);background-color: #ffb230;}/*黄*/
+.pmsStatus3,.trs3 {background-image:url(../searchpics/pms/pic_02_3_u.gif);background-color: #84d51a;}/*绿*/
+.pmsStatus4,.trs4 {background-image:url(../searchpics/pms/pic_02_4_u.gif);background-color: #fd2727;}/*红*/
+.pmsStatus1:hover,.trs1:hover {background-color: #bababa;}/*灰-over*/
+.pmsStatus2:hover,.trs2:hover {background-color: #fec25e;}/*黄-over*/
+.pmsStatus3:hover,.trs3:hover {background-color: #99dd41;}/*绿-over*/
+.pmsStatus4:hover,.trs4:hover {background-color: #fc4646;}/*红-over*/
+
+.pmsStatus1.pmsClose{background-image:url(../searchpics/pms/pic_02_1_d.gif);}/*灰*/
+.pmsStatus2.pmsClose{background-image:url(../searchpics/pms/pic_02_2_d.gif);}/*黄*/
+.pmsStatus3.pmsClose{background-image:url(../searchpics/pms/pic_02_3_d.gif);}/*绿*/
+.pmsStatus4.pmsClose{background-image:url(../searchpics/pms/pic_02_4_d.gif);}/*红*/
+
+.trs1,.trs2,.trs3,.trs4 {background-image:none;background-position:right center;}
+.pmsTable .trs1 .lastTd,.pmsTable .trs2 .lastTd,.pmsTable .trs3 .lastTd,.pmsTable .trs4 .lastTd{background-position:right center; background-repeat:no-repeat;padding-right:20px;}
+.pmsEndNode{background-image:none;cursor:default;}
+
+
+.pmsConList{float:left;}
+.pmsChiList{float:left;padding-left:50px;position:relative;padding-top:25px;}
+.pmsCLBox{padding-top:5px;position:relative;}
+.pmsChiArrow {position:absolute;left:-40px;top:50%; margin-top:-4px; height:9px;width:30px; background:url(../searchpics/pms/pic_04.gif) right center no-repeat;}
+
+.pmsTable{border-spacing:0px;border-collapse:collapse;border:none;}
+.pmsTable td,.pmsTable th{line-height:30px;border:1px #fff solid; text-align:center;padding-left:10px;padding-right:10px;font-size:12px;color:#222;}
+.pmsTable th{background-color:#0fa0e8;font-weight:bold;color:#fff;}
+.pmsTable .lastTd{padding-right:20px;}
+
+.pmsTable .trs1 .lastTd {background-image:url(../searchpics/pms/pic_03_1_u.gif);}
+.pmsTable .trs2 .lastTd {background-image:url(../searchpics/pms/pic_03_2_u.gif);}
+.pmsTable .trs3 .lastTd {background-image:url(../searchpics/pms/pic_03_3_u.gif);}
+.pmsTable .trs4 .lastTd {background-image:url(../searchpics/pms/pic_03_4_u.gif);}
+
+.pmsTable .trs1 .trsClose{background-image:url(../searchpics/pms/pic_03_1_d.gif);}
+.pmsTable .trs2 .trsClose{background-image:url(../searchpics/pms/pic_03_2_d.gif);}
+.pmsTable .trs3 .trsClose{background-image:url(../searchpics/pms/pic_03_3_d.gif);}
+.pmsTable .trs4 .trsClose{background-image:url(../searchpics/pms/pic_03_4_d.gif);}
+/*02-pms end*/

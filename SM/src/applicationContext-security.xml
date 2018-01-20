@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/security
+           http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+
+	<!-- 认证功能http配置 -->
+	<!-- entry-point-ref 为用户第一次访问受保护的url时的处理程序.  --> 	
+	<http use-expressions="true" entry-point-ref="authenticationEntryPoint"> 
+	    <!-- 这里是拒绝用户访问的处理程序 --> 
+        <access-denied-handler ref="accessDeniedHandler" /> 
+		<intercept-url pattern="/login.jsp*" access="permitAll"/>
+		<intercept-url pattern="/**/*.js" access="permitAll"/>
+		<intercept-url pattern="/**/*.jpg" access="permitAll"/>
+		<intercept-url pattern="/**/*.gif" access="permitAll"/>
+		<intercept-url pattern="/**/*.css" access="permitAll"/>
+		<intercept-url pattern="/**/**.json*" access="permitAll"/>
+		<intercept-url pattern="/contents/**.jsp*" access="isAuthenticated()"/>
+        <custom-filter position="LOGOUT_FILTER" ref="secLogoutFilter" />		
+        <custom-filter before="FILTER_SECURITY_INTERCEPTOR" ref="checkInfoFilter" />
+        <custom-filter position="FORM_LOGIN_FILTER" ref="crmAuthFilter" /> 
+        <!-- 限制用户的最大登陆数,防止一个账号被多人使用 --> 
+        <!--<custom-filter position="CONCURRENT_SESSION_FILTER" ref="concurrencyFilter" /> -->
+        <session-management session-authentication-strategy-ref="crmSAS"/> 
+	</http>
+	
+	<!-- 登出 过滤器 -->
+	<beans:bean id="secLogoutFilter" 
+        class="com.yuchengtech.crm.sec.common.SecLogoutFilter"> 
+        <beans:constructor-arg ref="secLogoutSuccessHandler" /> 
+        <beans:constructor-arg> 
+            <beans:list> 
+                <beans:bean 
+                    class="com.yuchengtech.crm.sec.common.SecLogoutHandler"></beans:bean> 
+            </beans:list> 
+        </beans:constructor-arg> 
+    </beans:bean> 
+    
+    <!-- 登出 handler -->
+    <beans:bean id="secLogoutSuccessHandler" class="com.yuchengtech.crm.sec.common.SecLogoutSuccessHandler"> 
+    	<beans:property name="defaultLogoutUrl" value="/login.jsp"></beans:property>
+    </beans:bean>
+    
+	<!-- 登录失败 handler -->
+	<beans:bean id="secAuthenticationFailureHandler" class="com.yuchengtech.crm.sec.credentialstrategy.PswWrongStrategy">
+		<beans:property name="defaultFailureUrl" value="/login.jsp"></beans:property>
+	</beans:bean>
+	<!-- 登录成功 handler 
+	<beans:bean id="secAuthenticationSuccessHandler " class="com.yuchengtech.crm.sec.common.SecAuthenticationSuccessHandler">
+		<beans:property name="defaultSuccessUrl" value="/contents/pages/xtIndex/xtIndex.jsp"></beans:property>
+		<beans:property name="defaultFailureUrl" value="/login.jsp"></beans:property>
+	</beans:bean>-->
+	<!-- 登录成功 handler -->
+	<beans:bean id="secAuthenticationSuccessHandler " class="com.yuchengtech.crm.sec.common.SecAuthenticationSuccessHandler">
+		<beans:property name="defaultSuccessUrl" value="/contents/wljFrontFrame/preXtIndex.jsp"></beans:property>
+		<beans:property name="defaultFailureUrl" value="/login.jsp"></beans:property>
+	</beans:bean>
+	<!-- userDetailsService -->
+	<beans:bean id="userDetailsServiceImpl" class="com.yuchengtech.crm.sec.UserDetailsServiceImpl"></beans:bean>
+	<!-- AccessDecisionManager -->
+	<beans:bean id="accessDecision" class="com.yuchengtech.crm.sec.AccessDecisionManagerImpl"></beans:bean>
+	
+	<!-- FilterInvocationSecurityMetadataSource -->
+	<beans:bean id="accessMeta" class="com.yuchengtech.crm.sec.SecurityMetadataSourceImpl"></beans:bean>
+
+	<!-- 认证功能管理器 -->
+	<authentication-manager alias="authenticationManager">
+		<authentication-provider ref="authenticationProvider"/>
+	</authentication-manager>
+	
+	<!-- 认证功能实现 -->
+	<beans:bean id="authenticationProvider" class="com.yuchengtech.crm.sec.SecurityDaoAuthenticationProvider">
+		<beans:property name="userDetailsService" ref="userDetailsServiceImpl" />
+		<beans:property name="hideUserNotFoundExceptions" value="false"/>
+		<beans:property name="passwordEncoder" ref="md5PasswordEncoder"/>
+		<!-- 要启用的认证策略列表 -->
+		<beans:property name="credentialStrategy">
+			<beans:list>
+				<beans:ref bean="firstLoginStrategy"/>
+				<beans:ref bean="userIPStrategy"/>
+				<beans:ref bean="pswModifyStrategy"/>
+				<beans:ref bean="pswWrongStrategy"/>
+				<beans:ref bean="userOnlineStrategy"/>
+			</beans:list>
+		</beans:property>
+		<!-- 用户动态设置session级别信息加载列表  -->
+		<beans:property name="ctxSessionManager">
+			<beans:list>
+				<beans:ref bean="ctxSessionManager"/>	
+				<beans:ref bean="UserThemeInfo"/>			
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+	
+	<!-- 用户动态设置session级别信息实现类  -->
+	<beans:bean id="ctxSessionManager" class="com.yuchengtech.crm.sec.ctxsession.CtxSessionManager" />
+	<beans:bean id="UserThemeInfo" class="com.yuchengtech.crm.sec.ctxsession.UserThemeInfo" />
+	
+	
+	<!-- 认证策略类 -->
+	<!--强制修改口令策略类 -->
+	<beans:bean id="pswModifyStrategy" class="com.yuchengtech.crm.sec.credentialstrategy.PswModifyStrategy" />
+	<!--首次登陆策略类 -->
+	<beans:bean id="firstLoginStrategy" class="com.yuchengtech.crm.sec.credentialstrategy.FirstLoginStrategy" />
+	<!--口令错误策略类 -->
+	<beans:bean id="pswWrongStrategy" class="com.yuchengtech.crm.sec.credentialstrategy.PswWrongStrategy" >
+		<beans:property name="defaultFailureUrl" value="/login.jsp"></beans:property>
+	</beans:bean>
+	<!--登录时间段策略类 -->
+	<beans:bean id="loginTimeStrategy" class="com.yuchengtech.crm.sec.credentialstrategy.LoginTimeStrategy" />
+	<!--登陆IP策略类 -->
+	<beans:bean id="userIPStrategy" class="com.yuchengtech.crm.sec.credentialstrategy.UserIPStrategy" />
+	<!--在线用户数策略类 -->
+	<beans:bean id="userOnlineStrategy" class="com.yuchengtech.crm.sec.credentialstrategy.UserOnlineStrategy" />
+
+	<!-- 用户密码加密或解密 -->
+	<beans:bean id="md5PasswordEncoder" class="com.yuchengtech.crm.constance.MD5PasswordEncoder" />	
+	<beans:bean id="springMD5PasswordEncoder" class="com.yuchengtech.crm.constance.SpringMD5PasswordEncoder" />
+
+	<beans:bean id="checkInfoFilter" class="com.yuchengtech.crm.sec.SecurityInterceptor">
+		<beans:property name="authenticationManager" ref="authenticationManager" />
+		<beans:property name="accessDecisionManager" ref="accessDecision" />
+		<beans:property name="securityMetadataSource" ref="accessMeta" />
+	</beans:bean>
+	
+	<!-- 定义上下文返回的消息的国际化。 -->
+	<beans:bean id="messageSource"
+	  class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<!--<beans:property name="basename"
+	   	 value="classpath:org/springframework/security/messages_zh_CN"/> 
+	   	 -->
+	   	<beans:property name="basename"
+	   	value="classpath:securityMessage_zh_CN"/>	   	
+	</beans:bean>
+	
+	<!-- ConcurrentSession过滤器 -->
+	<beans:bean id="concurrencyFilter" 
+        class="org.springframework.security.web.session.ConcurrentSessionFilter"> 
+        <beans:property name="sessionRegistry" ref="sessionRegistry" /> 
+        <beans:property name="expiredUrl" value="/login.jsp" /> 
+    </beans:bean>
+	
+	<!-- CRM 权限session策略类 -->
+	<beans:bean id="crmSAS" 
+	       class="org.springframework.security.web.authentication.session.ConcurrentSessionControlStrategy"> 
+	       <beans:constructor-arg name="sessionRegistry" 
+	           ref="sessionRegistry" /> 
+	       <beans:property name="maximumSessions" value="10000" /> 
+    </beans:bean> 
+    
+    <!-- CRM 权限过滤器 -->
+    <beans:bean id="crmAuthFilter" 
+    	class="org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter"> 
+        <beans:property name="sessionAuthenticationStrategy" 
+            ref="crmSAS" /> 
+        <beans:property name="authenticationManager" ref="authenticationManager" /> 
+        <!-- <beans:property name="rememberMeServices" ref="rememberMeServices"></beans:property>--> 
+        <beans:property name="authenticationFailureHandler" 
+            ref="pswWrongStrategy" /> 
+        <beans:property name="authenticationSuccessHandler" 
+            ref="secAuthenticationSuccessHandler" /> 
+        <!-- <beans:property name="filterProcessesUrl" value="/ss_Login"></beans:property>  -->
+    </beans:bean> 
+        
+    <!-- SessionRegistryImpl -->
+    <beans:bean id="sessionRegistry" class="com.yuchengtech.crm.sec.session.SecSessionRegistryImpl" /> 
+    
+    <!-- 访问切入点 -->
+    <beans:bean id="authenticationEntryPoint" class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
+    	<beans:property name="loginFormUrl" value="/login.jsp" /> 
+    </beans:bean> 
+    
+    <!-- 认证被拒绝 -->
+	<beans:bean id="accessDeniedHandler" class="org.springframework.security.web.access.AccessDeniedHandlerImpl">
+    	<beans:property name="errorPage" value="/login.jsp" /> 
+    </beans:bean> 
+    
+</beans:beans>
